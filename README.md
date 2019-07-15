@@ -1,24 +1,26 @@
-# README
+**User**モデルで管理するテーブル
+```
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.text  "email"
+    t.text "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+  ```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  **Task**モデルで管理するテーブル
+  ```
+    create_table "pictures", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "status"
+    t.string "label"
+    t.date "deadline"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_pictures_on_user_id"
+  end
+  ```
