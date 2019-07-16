@@ -1,14 +1,22 @@
 require 'rails_helper'
 
 RSpec.feature "タスク管理機能", type: :feature do
+  background do
+    # あらかじめタスク一覧のテストで使用するためのタスクを二つ作成する
+
+    # backgroundの中に記載された記述は、そのカテゴリ内（feature "タスク管理機能", type: :feature do から endまでの内部）
+    # に存在する全ての処理内（scenario内）で実行される
+    # （「タスク一覧のテスト」でも「タスクが作成日時の降順に並んでいるかのテスト」でも、background内のコードが実行される）
+    FactoryBot.create(:task)
+    FactoryBot.create(:second_task)
+    FactoryBot.create(:third_task)
+  end
+
   scenario "タスク一覧のテスト" do
-    Task.create!(title: 'test_task_01', content: 'testtesttest')
-    Task.create!(title: 'test_task_02', content: 'samplesample')
-  
     visit tasks_path
   
-    expect(page).to have_content 'testtesttest'
-    expect(page).to have_content 'samplesample'
+    expect(page).to have_content '1月1日'
+    expect(page).to have_content '最初のコンテンツ'
   end
 
   scenario "タスク作成のテスト" do
@@ -23,14 +31,19 @@ RSpec.feature "タスク管理機能", type: :feature do
   end
 
   scenario "タスク詳細のテスト" do
-    Task.create!(title: 'てすとーーー', content: 'てすつ')
-  
+
     visit tasks_path
-  
-    first("table").click_link "詳細を確認する"
 
-    expect(page).to have_content 'てすとーーー'
-    expect(page).to have_content 'てすつ'
+    first(".show").click
 
+    expect(page).to have_content '1月2日'
+    expect(page).to have_content '2番目のコンテンツ'
+  end
+
+  scenario "タスクが作成日時の降順に並んでいるかのテスト" do
+    visit tasks_path
+    expect(all('.Task_content')[0]).to have_content '1月3日'
+    expect(all('.Task_content')[2]).to have_content '1月1日'
+    #これでソートをテストしている記事から引用したが、なぜこの記述で判定できるのか理解はできていない。
   end
 end
