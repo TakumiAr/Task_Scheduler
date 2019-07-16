@@ -12,9 +12,9 @@
   <tr>
     <td><%= task.title %></td>
     <td><%= task.content %></td>
-    <td><%= link_to t('view.show'), task_path(task.id) %></td>
-    <td><%= link_to t('view.edit'), edit_task_path(task.id) %></td>
-    <td><%= link_to t('view.delete'), task_path(task.id), method: :delete ,data: { confirm: t('view.confirm_delete') } %></td>
+    <td class="show"><%= link_to t('view.show'), task_path(task.id) %></td>
+    <td class="edit"><%= link_to t('view.edit'), edit_task_path(task.id) %></td>
+    <td class="delete"><%= link_to t('view.delete'), task_path(task.id), method: :delete ,data: { confirm: t('view.confirm_delete') } %></td>
   </tr>
 <% end %>
 </table>
