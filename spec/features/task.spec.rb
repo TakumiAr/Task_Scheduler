@@ -9,6 +9,7 @@ RSpec.feature "タスク管理機能", type: :feature do
     # （「タスク一覧のテスト」でも「タスクが作成日時の降順に並んでいるかのテスト」でも、background内のコードが実行される）
     FactoryBot.create(:task)
     FactoryBot.create(:second_task)
+    FactoryBot.create(:third_task)
   end
 
   scenario "タスク一覧のテスト" do
@@ -41,8 +42,8 @@ RSpec.feature "タスク管理機能", type: :feature do
 
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
     visit tasks_path
-
-    expect(Task.order("created_at DESC"))
-    #これでソートをテストしている記事を見つけたが、なぜこの記述で判定できるのか理解はできていない。
+    expect(all('.Task_content')[0]).to have_content '1月3日'
+    expect(all('.Task_content')[2]).to have_content '1月1日'
+    #これでソートをテストしている記事から引用したが、なぜこの記述で判定できるのか理解はできていない。
   end
 end
