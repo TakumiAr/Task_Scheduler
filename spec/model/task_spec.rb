@@ -14,6 +14,6 @@ RSpec.describe Task, type: :model do
 
   it "titleとcontentに内容が記載されていればバリデーションが通る" do
     task = Task.new(title: '成功テスト', content: '成功テスト')
-    expect(task).not_to be_valid
+    expect(task).to be_valid
   end
 end
