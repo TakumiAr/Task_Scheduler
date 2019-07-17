@@ -13,6 +13,7 @@
 
     <p id="task_title"><%= t('view.title') %><%= form.text_field :title %></p>
     <p id="task_content"><%= t('view.content') %><%= form.text_field :content %></p>
+    <p id="task_deadline"><%= t('view.deadline') %><%= form.date_select :deadline %></p>
 
   <%= form.submit value: t('view.submit') %>
 <% end %>

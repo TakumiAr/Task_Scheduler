@@ -210,6 +210,7 @@ ja:
   view:
     title: "タスク名"
     content: "タスク詳細"
+    deadline: "終了期限"
     list: "タスク一覧"
     edit: "編集"
     show: "詳細"
