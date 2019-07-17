@@ -15,7 +15,7 @@ RSpec.feature "タスク管理機能", type: :feature do
   scenario "タスク一覧のテスト" do
     visit tasks_path
   
-    expect(page).to have_content '1月1日'
+    expect(page).to have_content 'タスク1, 終了期限1'
     expect(page).to have_content '最初のコンテンツ'
   end
 
@@ -36,14 +36,19 @@ RSpec.feature "タスク管理機能", type: :feature do
 
     first(".show").click
 
-    expect(page).to have_content '1月2日'
+    expect(page).to have_content 'タスク2, 終了期限3'
     expect(page).to have_content '2番目のコンテンツ'
   end
 
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
     visit tasks_path
-    expect(all('.Task_content')[0]).to have_content '1月3日'
-    expect(all('.Task_content')[2]).to have_content '1月1日'
-    #これでソートをテストしている記事から引用したが、なぜこの記述で判定できるのか理解はできていない。
+    expect(all('.Task_content')[0]).to have_content 'タスク3, 終了期限2'
+    expect(all('.Task_content')[2]).to have_content 'タスク1, 終了期限1'
+  end
+
+  scenario "タスク一覧が狩猟期限でソートができるかのテスト" do
+    visit tasks_path
+    expect(all('.Task_content')[0]).to have_content 'タスク3, 終了期限2'
+    expect(all('.Task_content')[2]).to have_content 'タスク1, 終了期限1'
   end
 end
