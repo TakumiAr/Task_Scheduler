@@ -3,6 +3,11 @@
 <p><%= notice %></p>
 
 <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
+<%= form_with(url: tasks_path, local: true, method: :get ) do |form| %>
+  <%= form.text_field :title %>
+  <%= form.select :status, ["未着手", "着手中", "完了"], include_blank: true %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
 
 <table>
   <tr>
