@@ -9,6 +9,7 @@
     <th><%= t('view.title') %></th>
     <th><%= t('view.content') %></th>
     <th><%= t('view.deadline') %></th>
+    <th><%= t('view.status') %></th>
   </tr>
 
 <% @tasks.each do |task| %>
@@ -16,6 +17,7 @@
     <td><%= task.title %></td>
     <td><%= task.content %></td>
     <td><%= task.deadline %></td>
+    <td><%= task.status %></td>
     <td class="show"><%= link_to t('view.show'), task_path(task.id) %></td>
     <td class="edit"><%= link_to t('view.edit'), edit_task_path(task.id) %></td>
     <td class="delete"><%= link_to t('view.delete'), task_path(task.id), method: :delete ,data: { confirm: t('view.confirm_delete') } %></td>

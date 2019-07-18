@@ -5,6 +5,7 @@ class TasksController < ApplicationController
       @tasks = Task.all.order(deadline: "DESC")
     else
       @tasks = Task.all.order(id: "DESC")
+      # @status = Task.group
     end
   end
 
@@ -48,7 +49,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :content, :deadline)
+    params.require(:task).permit(:title, :content, :deadline, :status)
   end  
 
   def set_task
