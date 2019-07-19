@@ -15,6 +15,7 @@ gem 'kaminari', '~> 0.17.0'
 gem 'kaminari-bootstrap'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+gem 'bcrypt', '3.1.11'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
