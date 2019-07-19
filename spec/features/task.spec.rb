@@ -46,9 +46,15 @@ RSpec.feature "タスク管理機能", type: :feature do
     expect(all('.Task_content')[2]).to have_content 'タスク1, 終了期限1'
   end
 
-  scenario "タスク一覧が狩猟期限でソートができるかのテスト" do
-    visit tasks_path
-    expect(all('.Task_content')[0]).to have_content 'タスク3, 終了期限2'
+  scenario "タスク一覧が終了期限でソートができるかのテスト" do
+    visit tasks_path(sort_expired: "true")
+    expect(all('.Task_content')[0]).to have_content 'タスク2, 終了期限3'
     expect(all('.Task_content')[2]).to have_content 'タスク1, 終了期限1'
+  end
+
+  scenario "タスク一覧が優先順位でソートができるかのテスト" do
+    visit tasks_path(sort_priority: "true")
+    expect(all('.Task_content')[0]).to have_content 'タスク1, 終了期限1'
+    expect(all('.Task_content')[2]).to have_content 'タスク2, 終了期限3'
   end
 end
