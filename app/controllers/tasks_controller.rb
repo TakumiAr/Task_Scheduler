@@ -22,9 +22,12 @@ class TasksController < ApplicationController
 
     if params[:sort_expired].present?
       @tasks = @tasks.order(deadline: "DESC")
-    else
-      @tasks = @tasks.order(id: "DESC")
     end
+    if params[:sort_priority].present?
+      @tasks = @tasks.order(priority: "ASC")
+    end
+
+    @tasks = @tasks.order(id: "DESC")
   end
 
   def new
@@ -67,7 +70,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :content, :deadline, :status)
+    params.require(:task).permit(:title, :content, :deadline, :status, :priority)
   end  
 
   def set_task
