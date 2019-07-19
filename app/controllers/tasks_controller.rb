@@ -2,21 +2,32 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   def index
     #binding.pry
-    if params[:status].present? && params[:title].present?
-      @tasks = Task.search_status(params[:status]).search_title(params[:title])
-    elsif params[:status].blank? && params[:title].present? then 
-      @tasks = Task.search_title(params[:title])
-    elsif params[:status].present? && params[:title].blank? then
-      @tasks = Task.search_status(params[:status])
-    else
-      @tasks = Task.all
+    # if params[:status].present? && params[:title].present?
+    #   @tasks = Task.search_status(params[:status]).search_title(params[:title])
+    # elsif params[:status].blank? && params[:title].present? then 
+    #   @tasks = Task.search_title(params[:title])
+    # elsif params[:status].present? && params[:title].blank? then
+    #   @tasks = Task.search_status(params[:status])
+    # else
+    #   @tasks = Task.all
+    # end
+
+    @tasks = Task.all
+    if params[:status].present?
+      @tasks = @tasks.search_status(params[:status])
+    end
+    if params[:title].present?
+      @tasks =  @tasks.search_title(params[:title])
     end
 
     if params[:sort_expired].present?
       @tasks = @tasks.order(deadline: "DESC")
-    else
-      @tasks = @tasks.order(id: "DESC")
     end
+    if params[:sort_priority].present?
+      @tasks = @tasks.order(priority: "ASC")
+    end
+
+    @tasks = @tasks.order(id: "DESC")
   end
 
   def new
@@ -59,7 +70,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :content, :deadline, :status)
+    params.require(:task).permit(:title, :content, :deadline, :status, :priority)
   end  
 
   def set_task

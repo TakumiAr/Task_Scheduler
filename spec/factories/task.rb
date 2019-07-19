@@ -8,6 +8,7 @@ FactoryBot.define do
         content { "最初のコンテンツ" }
         deadline { "2020-03-10 " }
         status { "着手中"}
+        priority{ 0 }
         #created_at { "2019-01-01 19:13:53 +0900" }
     end
   
@@ -18,6 +19,7 @@ FactoryBot.define do
         content { "2番目のコンテンツ" }
         deadline { "2020-03-30 "}
         status { "未着手" }
+        priority { 2 }
         #created_at { "2019-01-02 19:13:53 +0900" }
     end
 
@@ -26,6 +28,7 @@ FactoryBot.define do
         content { "3番目のコンテンツ" }
         deadline { "2020-03-20 "}
         status { "完了" }
+        priority { 1 }
         #created_at { "2019-01-03 19:13:53 +0900" }
     end
 end
