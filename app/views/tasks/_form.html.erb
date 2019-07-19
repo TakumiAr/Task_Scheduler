@@ -10,12 +10,12 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="task_new">
     <p id="task_title"><%= t('view.title') %><%= form.text_field :title %></p>
     <p id="task_content"><%= t('view.content') %><%= form.text_field :content %></p>
     <p id="task_deadline"><%= t('view.deadline') %><%= form.date_select :deadline %></p>
     <p id="task_status"><%= t('view.status') %><%= form.select :status, ["未着手", "着手中", "完了"] %></p>
     <p id="task_priority"><%= t('view.priority') %><%= form.select :priority, {高: "高", 中: "中", 低: "低"} %></p>
-  <%= form.submit value: t('view.submit') %>
+    <%= form.submit value: t('view.submit') %>
+  </div>
 <% end %>
-<%= link_to t('view.back_to_list'), tasks_path %>
