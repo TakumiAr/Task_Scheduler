@@ -9,7 +9,102 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand">
+        <%= link_to tasks_path do %>
+        <%= image_tag 'EL_logo.png', size:30, class: "d-inline-block align-top" %>
+        <% end %>
+        Task Scheduler
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sort
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "Deadline", tasks_path(sort_expired: "true"), class:"dropdown-item" %>
+              <%= link_to "Priority", tasks_path(sort_priority: "true"), class:"dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= link_to "Restore", tasks_path, class: "dropdown-item" %>
+            </div>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Create a New Task", new_task_path, class: "nav-link nav_new" %>
+          </li>
+        </ul>
+        <%= form_with(url: tasks_path, local: true, method: :get, class: "form-inline my-2 my-lg-0" ) do |form| %>
+          <%= form.select :status, ["", "未着手", "着手中", "完了"], {}, include_blank: true, class: "form-control form-control-md" %>
+          <%= form.text_field :title, class: 'form-control mr-sm-2' %>
+          <%= submit_tag "Search", name: nil, class: "btn btn-outline-success my-2 my-sm-0" %>
+        <% end %>
+      </div>
+    </nav>
+  </header>
   <body>
-    <%= yield %>
+    <div class="col-12">
+      <div class="mx-auto" style="width: 700px;">
+        <%= yield %>
+      </div>
+    </div>
   </body>
+  <!-- Footer -->
+  <footer class="page-footer font-small special-color-dark pt-4">
+  
+    <!-- Footer Elements -->
+    <div class="container">
+  
+      <!--Grid row-->
+      <div class="row">
+  
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+  
+          <!-- Form -->
+          <form class="form-inline">
+            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+              aria-label="Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </form>
+          <!-- Form -->
+  
+        </div>
+        <!--Grid column-->
+  
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+  
+          <form class="input-group">
+            <input type="text" class="form-control form-control-sm" placeholder="Your email"
+              aria-label="Your email" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-sm btn-outline-white my-0" type="button">Sign up</button>
+            </div>
+          </form>
+  
+        </div>
+        <!--Grid column-->
+  
+      </div>
+      <!--Grid row-->
+  
+    </div>
+    <!-- Footer Elements -->
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="https://client.diveintocode.jp/curriculums/1277"> 1907_web_full.com</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
 </html>
