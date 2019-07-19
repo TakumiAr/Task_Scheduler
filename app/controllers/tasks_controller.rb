@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  PER = 3
+  PER = 5
   def index
     #binding.pry
     # if params[:status].present? && params[:title].present?
