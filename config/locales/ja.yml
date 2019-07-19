@@ -211,6 +211,7 @@ ja:
     title: "タスク名"
     content: "タスク詳細"
     deadline: "終了期限"
+    priority: "優先順位"
     status: "ステータス"
     list: "タスク一覧"
     edit: "編集"
