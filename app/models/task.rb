@@ -6,4 +6,5 @@ class Task < ApplicationRecord
     scope :search_title, -> (params){ where('title LIKE ?', "%#{params}%") }
 
     enum priority:{"高":0, "中":1, "低":2}
+    belongs_to :user
 end
