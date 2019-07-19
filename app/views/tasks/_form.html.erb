@@ -15,7 +15,7 @@
     <div class="task_new">
       <p id="task_title"><%= t('view.title') %><%= form.text_field :title, class: "form-control" %></p>
       <p id="task_content"><%= t('view.content') %><%= form.text_field :content, class: "form-control" %></p>
-      <p id="task_deadline"><%= t('view.deadline') %><%= form.text_field :deadline, class: "form-control datepicker", id: "date_sample" %></p>
+      <p id="task_deadline"><%= t('view.deadline') %><%= form.text_field :deadline, class: "form-control datepicker", id: "date_sample", autocomplete: "off" %></p>
       <p id="task_status"><%= t('view.status') %><%= form.select :status, ["未着手", "着手中", "完了"], {}, class: "form-control" %></p>
       <p id="task_priority"><%= t('view.priority') %><%= form.select :priority, {高: "高", 中: "中", 低: "低"}, {}, class: "form-control" %></p>
       <%= form.submit value: t('view.submit'), class: "btn btn-primary" %>

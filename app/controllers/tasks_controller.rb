@@ -1,17 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  PER = 5
+  PER = 20
   def index
-    #binding.pry
-    # if params[:status].present? && params[:title].present?
-    #   @tasks = Task.search_status(params[:status]).search_title(params[:title])
-    # elsif params[:status].blank? && params[:title].present? then 
-    #   @tasks = Task.search_title(params[:title])
-    # elsif params[:status].present? && params[:title].blank? then
-    #   @tasks = Task.search_status(params[:status])
-    # else
-    #   @tasks = Task.all
-    # end
 
     @tasks = Task.page(params[:page]).per(PER)
     if params[:status].present?
