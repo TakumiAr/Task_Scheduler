@@ -15,9 +15,9 @@
     <td><%= task.deadline %></td>
     <td><%= task.status %></td>
     <td><%= task.priority %></td>
-    <td class="show"><button type="button" class="btn btn-outline-primary"><%= link_to t('view.show'), task_path(task.id) %></buttom></td>
-    <td class="edit"><button type="button" class="btn btn-outline-primary"><%= link_to t('view.edit'), edit_task_path(task.id) %></button></td>
-    <td class="delete"><button type="button" class="btn btn-outline-primary"><%= link_to t('view.delete'), task_path(task.id), method: :delete ,data: { confirm: t('view.confirm_delete') } %></button></td>
+    <td class="show"><%= link_to t('view.show'), task_path(task.id), class: "btn btn-outline-primary" %></td>
+    <td class="edit"><%= link_to t('view.edit'), edit_task_path(task.id), class: "btn btn-outline-info" %></td>
+    <td class="delete"><%= link_to t('view.delete'), task_path(task.id), method: :delete, class: "btn btn-outline-danger", data: { confirm: t('view.confirm_delete') } %></td>
   </tr>
 <% end %>
 </table>
