@@ -211,6 +211,7 @@ ja:
     title: "タスク名"
     content: "タスク詳細"
     deadline: "終了期限"
+    status: "ステータス"
     list: "タスク一覧"
     edit: "編集"
     show: "詳細"
@@ -221,3 +222,4 @@ ja:
     error_sum: "件のエラーがあります"
     confirm_delete: "本当に削除してよろしいですか？"
     confirm_confirm: "以下の内容で送信します"
+  
