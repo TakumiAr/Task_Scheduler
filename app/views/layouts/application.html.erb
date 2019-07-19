@@ -65,29 +65,19 @@
       <div class="row">
   
         <!--Grid column-->
-        <div class="col-md-6 mb-4">
-          <form class="input-group">
-          <input type="text" class="form-control form-control-sm" placeholder="Your email"
-            aria-label="Your email" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-sm btn-outline-white my-0" type="button">Sign in</button>
-        </div>
-      </form>
-        </div>
+            <form class="input-group">
+              <div class="input-group-append">
+                <%= link_to "Sign in", new_session_path, class: "nav-link nav_new" %>
+              </div>
+            </form>
         <!--Grid column-->
   
         <!--Grid column-->
-        <div class="col-md-6 mb-4">
-  
           <form class="input-group">
-            <input type="text" class="form-control form-control-sm" placeholder="Your email"
-              aria-label="Your email" aria-describedby="basic-addon2">
             <div class="input-group-append">
-              <button class="btn btn-sm btn-outline-white my-0" type="button">Sign up</button>
+              <%= link_to "Sign up", new_user_path, class: "nav-link nav_new" %>
             </div>
           </form>
-  
-        </div>
         <!--Grid column-->
   
       </div>
