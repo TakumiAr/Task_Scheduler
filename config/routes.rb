@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  namespace :admin do
+    resources :users
+  end
+  get 'admin', to: 'admin/users#index'
 end
