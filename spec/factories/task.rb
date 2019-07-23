@@ -3,12 +3,15 @@ FactoryBot.define do
 
     # 作成するテストデータの名前を「task」とします
     # （実際に存在するクラス名と一致するテストデータの名前をつければ、そのクラスのテストデータを自動で作成します）
+
+
     factory :task, class: Task do
         title { "タスク1, 終了期限1" }
         content { "最初のコンテンツ" }
         deadline { "2020-03-10 " }
         status { "着手中"}
         priority{ 0 }
+        user_id { }
         #created_at { "2019-01-01 19:13:53 +0900" }
     end
   
@@ -20,6 +23,8 @@ FactoryBot.define do
         deadline { "2020-03-30 "}
         status { "未着手" }
         priority { 2 }
+        user
+        # user_id {@user.id}
         #created_at { "2019-01-02 19:13:53 +0900" }
     end
 
@@ -29,6 +34,7 @@ FactoryBot.define do
         deadline { "2020-03-20 "}
         status { "完了" }
         priority { 1 }
+        user_id { @user.id}
         #created_at { "2019-01-03 19:13:53 +0900" }
     end
 end

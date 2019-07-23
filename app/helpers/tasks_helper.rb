@@ -6,4 +6,7 @@ module TasksHelper
             task_path
         end
     end
+    def logged_in?
+        current_user.present?
+    end
 end
