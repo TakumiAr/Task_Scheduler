@@ -1,0 +1,22 @@
+<p><%= notice %></p>
+<table class="table table-hover">
+  <tr>
+    <th>Task</th>
+    <th>Content</th>
+    <th>Deadline</th>
+    <th>Status</th>
+    <th>Priority</th>
+  </tr>
+<% count = 0 %>
+<% @user.tasks.each do |ktask| %>
+  <% count += 1 %>
+  <tr class="Task_content">
+    <td><%= ktask.title %></td>
+    <td><%= ktask.content %></td>
+    <td><%= ktask.deadline %></td>
+    <td><%= ktask.status %></td>
+    <td><%= ktask.priority %></td>
+  </tr>
+<% end %>
+記事数は<%= count %>つです。
+</table>

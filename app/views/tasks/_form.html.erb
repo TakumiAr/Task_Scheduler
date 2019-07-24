@@ -19,12 +19,12 @@
   <%= f.label :content %>
   <%= f.text_field :content %>
   <%= f.label :deadline %>
-  <%= f.text_field :deadline %>
+  <%= f.text_field :deadline, class: "form-control datepicker" %></p>
   <%= f.label :status %>
   <%= f.select :status, ["未着手", "着手中", "完了"], {} %>
   <%= f.label :priority %>
   <%= f.select :priority, {高: "高", 中: "中", 低: "低"}, {} %>
-  <%= f.submit "a"  %>
+  <%= f.submit "登録する。"  %>
   </div>
   </div>
   </form>
