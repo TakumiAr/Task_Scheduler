@@ -24,6 +24,10 @@
   <%= f.select :status, ["未着手", "着手中", "完了"], {} %>
   <%= f.label :priority %>
   <%= f.select :priority, {高: "高", 中: "中", 低: "低"}, {} %>
+  <% Label.all.each do |label| %>
+    <%= label.title %>
+    <%= f.radio_button(:label_ids, label.id) %>
+  <% end %>
   <%= f.submit "登録する。"  %>
   </div>
   </div>
