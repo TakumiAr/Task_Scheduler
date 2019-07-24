@@ -5,5 +5,11 @@ class User < ApplicationRecord
     before_validation { email.downcase! }
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 }
-    has_many :tasks
+    has_many :tasks, dependent: :destroy
+
+    private
+
+    def destroy_check
+        throw(:abort) if User.where(admin: true).length == 1
+    end
 end

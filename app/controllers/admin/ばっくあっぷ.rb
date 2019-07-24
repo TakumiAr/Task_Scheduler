@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :update, :destroy]
-    before_action :admin_user
+    # before_action :admin_user
 
     def index
       @users = User.select(:id, :name, :email, :created_at).order("created_at DESC")
@@ -9,7 +9,7 @@ class Admin::UsersController < ApplicationController
     def new
         @user = User.new
     end
-
+    
     def create
         @user = User.new(user_params)
         if @user.save
@@ -19,7 +19,7 @@ class Admin::UsersController < ApplicationController
             render'new'
         end
     end
-
+    
     def show
     end
 
@@ -35,14 +35,10 @@ class Admin::UsersController < ApplicationController
     end
 
     def destroy
-        unless User.where(admin: true).length == 1 && @user.admin?
-            @user.destroy
-            redirect_to admin_users_path, notice:"タスクを削除しました！"
-        else
-            redirect_to admin_users_path, notice:"adminユーザが1人のときはadminユーザを削除できません！"
-        end
+        @user.destroy
+        redirect_to admin_users_path, notice:"タスクを削除しました！"
       end
-
+  
     private
 
     def admin_user
@@ -50,11 +46,7 @@ class Admin::UsersController < ApplicationController
     end
 
     def user_params
-        if current_user.admin == true then
-            params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
-        else
-            params.require(:user).permit(:name, :email, :password, :password_confirmation)
-        end
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
     end
 
     def set_user
