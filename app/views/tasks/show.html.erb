@@ -1,2 +1,5 @@
 <p><%= t('view.title') %>: <%= @task.title %></p>
 <p><%= t('view.content') %>: <%= @task.content %></p>
+<% @task.labels.each do |label| %>
+    <%= label.title %>
+<% end %>
