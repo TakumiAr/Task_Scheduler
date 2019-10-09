@@ -1,8 +1,9 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :require_login
-  PER = 20
+
   def index
+    PER = 20
     @tasks = current_user.tasks.page(params[:page]).per(PER)
     if params[:status].present?
       @tasks = @tasks.search_status(params[:status])
