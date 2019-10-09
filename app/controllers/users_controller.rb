@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
     def edit
         if @user.email == current_user.email
-            else
+        else
             redirect_to tasks_path, notice: "他のユーザーのプロフィールは編集できません！"
         end
     end
@@ -40,10 +40,10 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        if current_user.admin == true then
-            params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin )
-        else
+        if current_user.nil? then
             params.require(:user).permit(:name, :email, :password, :password_confirmation )
+        elsif current_user.admin == true then
+            params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin )
         end
     end
 
